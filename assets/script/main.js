@@ -1,4 +1,5 @@
-onload = cambiarImagenes();
+//Evento inicio de web
+    onload = cambiarImagenes();
 
 //Evento para volver al Index
 document.querySelector(".tittle").addEventListener("click", function () {
@@ -20,6 +21,7 @@ document.querySelector(".tittle").addEventListener("click", function () {
     }, 3000);
 });
 
+//cargar imagenes aleatorias en el menu
 function cambiarImagenes() {  
 
     var arrayimagenesbatalla = new Array();
@@ -44,11 +46,16 @@ function cambiarImagenes() {
     arrayimagenescomunidad[3] = "./assets/images/fasecomunidadindex4.jpg";
     arrayimagenescomunidad[4] = "./assets/images/fasecomunidadindex.jpg";
 
-    var imagenBatallaAleatoria = arrayimagenesbatalla[Math.floor(Math.random() * arrayimagenesbatalla.length)];
-    var imagenViajeAleatoria = arrayimagenesviaje[Math.floor(Math.random() * arrayimagenesviaje.length)];
-    var imagenComunidadAleatoria = arrayimagenescomunidad[Math.floor(Math.random() * arrayimagenescomunidad.length)];
+    var imagenBatallaAleatoria = ObtenerimagenAletaria(arrayimagenesbatalla, arrayimagenesbatalla.length);
+    var imagenViajeAleatoria = ObtenerimagenAletaria(arrayimagenesviaje, arrayimagenesviaje.length);
+    var imagenComunidadAleatoria = ObtenerimagenAletaria(arrayimagenescomunidad, arrayimagenescomunidad.length);
 
     document.getElementById("imagenmenubatalla").setAttribute("src", imagenBatallaAleatoria);
     document.getElementById("imagenmenuviaje").setAttribute("src", imagenViajeAleatoria);
     document.getElementById("imagenmenucomunidad").setAttribute("src",imagenComunidadAleatoria);
+}
+
+function ObtenerimagenAletaria(arrayimagenes, numeroimagenes)
+{
+    return arrayimagenes[Math.floor(Math.random() * numeroimagenes)];
 }
